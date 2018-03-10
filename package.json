@@ -1,0 +1,33 @@
+{
+  "name": "desafio-claro-api",
+  "version": "1.0.0",
+  "description": "api REST para o projeto Desafio Claro 2017",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigo-mamangava/desafio-claro-api.git"
+  },
+  "author": "Rodrigo Muniz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigo-mamangava/desafio-claro-api/issues"
+  },
+  "homepage": "https://github.com/rodrigo-mamangava/desafio-claro-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6",
+    "nodemon": "^1.15.1",
+    "swapi-node": "^0.4.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
