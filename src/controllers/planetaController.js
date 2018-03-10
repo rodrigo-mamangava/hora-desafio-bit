@@ -17,30 +17,9 @@ export const addPlaneta = (req, res) => {
         }
         res.json(planeta)
 
-        swapi.get(`http://swapi.co/api/planets/?search=${planeta.nome}`).then((swapiResult) => {
-
-        console.log(planeta);
-
-            if(swapiResult.count == 1){
-
-                let totalAparicoes = swapiResult.results[0].films.length;
-                console.log(totalAparicoes);
-
-                Planeta.findByIdAndUpdate(planeta._id, { $set: { totalAparicoesFilmes: totalAparicoes }}, {new: true}, (err, res) => {
-                    if(err){
-                        console.log(err)
-                    }
-                    console.log(res);
-                });
-               
-            }
-
-            
-
-        });
+        updateAparicoesFilmes(planeta);
 
     })
-
 };
 
 export const getPlanetas = (req, res) => {
@@ -52,6 +31,8 @@ export const getPlanetas = (req, res) => {
         res.json(listaPlanetas);
     });
 };
+
+
 
 export const updatePlaneta = (req, res) => {
     Planeta.findOneAndUpdate(
@@ -68,7 +49,7 @@ export const updatePlaneta = (req, res) => {
 };
 
 export const deletePlaneta = (req, res) => {
-    Planeta.remove({ _id: req.params.planetaId }, (err, mobile) => {
+    Planeta.remove({ _id: req.params.planetaId }, (err, planeta) => {
         if (err) {
             res.send(err);
         }
@@ -76,5 +57,37 @@ export const deletePlaneta = (req, res) => {
             message: 'Excluido com sucesso'
         });
     })
+}
+
+export const getPlanetaById = (req, res) => {
+    Planeta.findById({ _id: req.params.planetaId }, (err, planeta) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(planeta);
+    })
+}
+
+export const getPlanetaByNome = (req, res) => {
+    Planeta.findOne({ 'nome': req.params.planetaNome  }, (err, planeta) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(planeta);
+    })
+}
+
+var updateAparicoesFilmes = (planeta) =>{
+    swapi.get(`http://swapi.co/api/planets/?search=${planeta.nome}`).then((swapiResult) => {
+            if(swapiResult.count == 1){
+                let totalAparicoes = swapiResult.results[0].films.length;
+                Planeta.findByIdAndUpdate(planeta._id, { $set: { totalAparicoesFilmes: totalAparicoes }}, {new: true}, (err, res) => {
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log(res);
+                });               
+            }
+        });
 }
 

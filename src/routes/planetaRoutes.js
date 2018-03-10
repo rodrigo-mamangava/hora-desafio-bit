@@ -2,7 +2,9 @@ import {
     addPlaneta,
     getPlanetas,
     updatePlaneta,
-    deletePlaneta
+    deletePlaneta,
+    getPlanetaById,
+    getPlanetaByNome
 } from '../controllers/planetaController';
 
 const routes = (app) => {
@@ -14,7 +16,11 @@ const routes = (app) => {
 
     app.route('/api/planeta/:planetaId')
         .put(updatePlaneta)
-        .delete(deletePlaneta);
+        .delete(deletePlaneta)
+        .get(getPlanetaById);
+
+    app.route('/api/planeta/nome/:planetaNome')
+        .get(getPlanetaByNome);
 }
 
 export default routes
