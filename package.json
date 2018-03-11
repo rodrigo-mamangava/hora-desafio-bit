@@ -1,22 +1,22 @@
 {
-  "name": "desafio-claro-api",
+  "name": "desafio-bit",
   "version": "1.0.0",
-  "description": "api REST para o projeto Desafio Claro 2017",
+  "description": "api REST para o projeto Desafio Bit",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "start": "nodemon ./server.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rodrigo-mamangava/desafio-claro-api.git"
+    "url": "git+https://github.com/rodrigo-mamangava/hora-desafio-bit"
   },
   "author": "Rodrigo Muniz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rodrigo-mamangava/desafio-claro-api/issues"
+    "url": "https://github.com/rodrigo-mamangava/hora-desafio-bit/issues"
   },
-  "homepage": "https://github.com/rodrigo-mamangava/desafio-claro-api#readme",
+  "homepage": "https://github.com/rodrigo-mamangava/hora-desafio-bit#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -28,6 +28,11 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "co-supertest": "0.0.10",
+    "jasmine": "^3.1.0",
+    "request": "^2.83.0"
   }
 }
